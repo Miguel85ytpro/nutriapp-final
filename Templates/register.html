@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <h2 class="text-center mb-4">Registrate</h2>
+        <div class="card bg-success text-white shadow">
+            <div class="card-body">
+                <form method="POST">
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad" name="edad" min="1" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="sexo" class="form-label">Sexo</label>
+                            <select class="form-select" id="sexo" name="sexo" required>
+                                <option value="" disabled selected>Selecciona...</option>
+                                <option value="male">Masculino</option>
+                                <option value="female">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="peso" class="form-label">Peso (kg)</label>
+                            <input type="number" step="0.1" class="form-control" id="peso" name="peso" min="1" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="altura" class="form-label">Altura (cm)</label>
+                            <input type="number" class="form-control" id="altura" name="altura" min="1" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="nivel_actividad" class="form-label">Nivel de Actividad Física</label>
+                        <select class="form-select" id="nivel_actividad" name="nivel_actividad" required>
+                            <option value="" disabled selected>Selecciona tu nivel</option>
+                            <option value="sedentario">Sedentario (Poco o ningún ejercicio)</option>
+                            <option value="ligero">Ligero (Ejercicio 1-3 veces/semana)</option>
+                            <option value="moderado">Moderado (Ejercicio 3-5 veces/semana)</option>
+                            <option value="activo">Activo (Ejercicio 6-7 veces/semana)</option>
+                            <option value="muy_activo">Muy Activo (Ejercicio intenso diario/doble sesión)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="objetivo" class="form-label">Objetivo Principal</label>
+                        <select class="form-select" id="objetivo" name="objetivo" required>
+                            <option value="" disabled selected>Selecciona tu meta</option>
+                            <option value="bajar_peso">Bajar de peso</option>
+                            <option value="aumentar_musculo">Aumentar masa muscular</option>
+                            <option value="mantener_peso">Mantener peso</option>
+                            <option value="mejorar_digestion">Mejorar digestión</option>
+                            <option value="control_condicion">Controlar una condición (diabetes, hipertensión)</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="alergias" class="form-label">Alergias / Intolerancias (Ej: maní, lactosa, gluten)</label>
+                        <input type="text" class="form-control" id="alergias" name="alergias" placeholder="Escribe 'Ninguna' si aplica">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="dieta_especifica" class="form-label">Dieta Específica</label>
+                        <select class="form-select" id="dieta_especifica" name="dieta_especifica">
+                            <option value="ninguna">Ninguna</option>
+                            <option value="vegana">Vegana</option>
+                            <option value="vegetariana">Vegetariana</option>
+                            <option value="keto">Keto/Cetogénica</option>
+                            <option value="mediterranea">Mediterránea</option>
+                            <option value="paleo">Paleo</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nivel_experiencia" class="form-label">Nivel de Experiencia en Cocina</label>
+                        <select class="form-select" id="nivel_experiencia" name="nivel_experiencia" required>
+                            <option value="" disabled selected>Selecciona...</option>
+                            <option value="principiante">Principiante (Casi nunca cocino)</option>
+                            <option value="intermedio">Intermedio (Sé cocinar lo básico)</option>
+                            <option value="avanzado">Chef Aficionado (Me encanta cocinar)</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">Crear Cuenta en NutriApp</button>
+                    </div>
+                </form>
+                <p class="text-center mt-3">
+                    ¿Ya tienes una cuenta? <a href="{{ url_for('login') }}" class="text-white fw-bold">Iniciar Sesión</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

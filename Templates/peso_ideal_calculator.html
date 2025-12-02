@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-6 mx-auto">
+<div class="card shadow-sm text-dark">
+<div class="card-header bg-success text-white">Calculadora de Peso Ideal</div>
+
+    <div class="card-body">
+        <form method="post" action="{{ url_for('peso_ideal') }}">
+            <div class="mb-3">
+                <label class="form-label">Estatura (cm)</label>
+                <input type="number" name="height_pi" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sexo</label>
+                <select name="gender_pi" class="form-select" required>
+                    <option value="male">Hombre</option>
+                    <option value="female">Mujer</option>
+                </select>
+            </div>
+
+            <button class="btn btn-success w-100">Calcular Peso Ideal</button>
+        </form>
+    </div>
+</div>
+
+{% if results and results.tipo == "peso_ideal" %}
+<div class="mt-4 p-4 bg-white text-dark rounded shadow-lg border-success border-4">
+    <h2 class="h4 text-success">Resultado: Peso Ideal Estimado</h2>
+    <p class="mb-0">Tu Peso Ideal estimado es de: <span class="fw-bold">{{ results.peso_ideal }}</span> kg.</p>
+    <small class="text-muted">Este es un valor de referencia basado en tu altura.</small>
+</div>
+{% endif %}
+
+
+</div>
+{% endblock %}

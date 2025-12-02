@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-6 mx-auto">
+<div class="card shadow-sm text-dark">
+<div class="card-header bg-success text-white">Calculadora de Tasa Metabólica Basal (TMB)</div>
+
+    <div class="card-body">
+        <form method="post" action="{{ url_for('tmb') }}">
+            <div class="mb-3">
+                <label class="form-label">Peso (kg)</label>
+                <input type="number" name="weight_tmb" class="form-control" step="0.01" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Estatura (cm)</label>
+                <input type="number" name="height_tmb" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Edad</label>
+                <input type="number" name="age_tmb" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sexo</label>
+                <select name="gender_tmb" class="form-select" required>
+                    <option value="male">Hombre</option>
+                    <option value="female">Mujer</option>
+                </select>
+            </div>
+
+            <button class="btn btn-success w-100">Calcular TMB</button>
+        </form>
+    </div>
+</div>
+
+{% if results and results.tipo == "tmb" %}
+<div class="mt-4 p-4 bg-white text-dark rounded shadow-lg border-success border-4">
+    <h2 class="h4 text-success">Resultado: Tasa Metabólica Basal</h2>
+    <p class="mb-0">Tu TMB es de: <span class="fw-bold">{{ results.tmb }}</span> kcal/día.</p>
+    <small class="text-muted">Esta es la energía mínima que tu cuerpo necesita en reposo.</small>
+</div>
+{% endif %}
+
+
+</div>
+{% endblock %}

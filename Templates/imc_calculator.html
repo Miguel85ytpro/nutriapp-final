@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-6 mx-auto">
+<div class="card shadow-sm text-dark">
+<div class="card-header bg-success text-white">Calculadora IMC</div>
+
+    <div class="card-body">
+        <form method="post" action="{{ url_for('imc') }}">
+            <div class="mb-3">
+                <label class="form-label">Peso (kg)</label>
+                <input type="number" name="weight_imc" class="form-control" step="0.01" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Estatura (cm)</label>
+                <input type="number" name="height_imc" class="form-control" required>
+            </div>
+
+            <button class="btn btn-success w-100">Calcular IMC</button>
+        </form>
+    </div>
+</div>
+
+{% if results and results.tipo == "imc" %}
+<div class="mt-4 p-4 bg-white text-dark rounded shadow-lg border-success border-4">
+    <h2 class="h4 text-success">Resultado: Índice de Masa Corporal</h2>
+    <p class="mb-1"><b>IMC:</b> <span class="fw-bold">{{ results.imc }}</span></p>
+    <p class="mb-0"><b>Interpretación:</b> <span class="fw-bold">{{ results.interpretacion }}</span></p>
+</div>
+{% endif %}
+{% endblock %}

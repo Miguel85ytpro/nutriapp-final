@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-success bg-gradient text-white d-flex flex-column min-vh-100">
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-6 mx-auto">
+<div class="card shadow-sm text-dark">
+<div class="card-header bg-success text-white">Calculadora de Gasto Calórico Total (GCT)</div>
+
+    <div class="card-body">
+        <form method="post" action="{{ url_for('gct') }}">
+            <div class="mb-3">
+                <label class="form-label">Tasa Metabólica Basal (TMB en kcal)</label>
+                <input type="number" name="tmb_gct" class="form-control" step="0.01" required placeholder="Introduce tu TMB calculada previamente">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nivel de actividad</label>
+                <select name="activity_level_gct" class="form-select" required>
+                    <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
+                    <option value="ligero">Ejercicio ligero (1-3 días a la semana)</option>
+                    <option value="moderado">Ejercicio moderado (3-5 días a la semana)</option>
+                    <option value="activo">Ejercicio fuerte (6-7 días a la semana)</option>
+                    <option value="muy_activo">Muy activo (ejercicio diario intenso, trabajo físico)</option>
+                </select>
+            </div>
+
+            <button class="btn btn-success w-100">Calcular GCT</button>
+        </form>
+    </div>
+</div>
+
+{% if results and results.tipo == "gct" %}
+<div class="mt-4 p-4 bg-white text-dark rounded shadow-lg border-success border-4">
+    <h2 class="h4 text-success">Resultado: Gasto Calórico Total</h2>
+    <p class="mb-0">Tu GCT es de: <span class="fw-bold">{{ results.gct }}</span> kcal/día.</p>
+    <small class="text-muted">Esta es la cantidad de calorías que quemas diariamente.</small>
+</div>
+{% endif %}
+
+
+</div>
+{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

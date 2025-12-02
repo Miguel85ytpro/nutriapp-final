@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-6 mx-auto">
+<div class="card shadow-sm text-dark">
+<div class="card-header bg-success text-white">Calculadora de Distribución de Macronutrientes</div>
+
+    <div class="card-body">
+        <form method="post" action="{{ url_for('macros') }}">
+
+            <div class="mb-3">
+                <label class="form-label">TDEE (Gasto Calórico Total en kcal)</label>
+                <input type="number" name="tdee_macros" class="form-control" required placeholder="Introduce tu GCT">
+            </div>
+
+            <p class="mt-4 fw-bold">Distribución por Porcentaje (deben sumar 100%):</p>
+
+            <div class="mb-3">
+                <label class="form-label">% Carbohidratos</label>
+                <input type="number" name="carb_perc" class="form-control" required min="0" max="100">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">% Proteínas</label>
+                <input type="number" name="prot_perc" class="form-control" required min="0" max="100">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">% Grasas</label>
+                <input type="number" name="fat_perc" class="form-control" required min="0" max="100">
+            </div>
+
+            <button class="btn btn-success w-100">Calcular Gramos</button>
+        </form>
+    </div>
+</div>
+
+{% if results and results.tipo == "macros" %}
+<div class="mt-4 p-4 bg-white text-dark rounded shadow-lg border-success border-4">
+    <h2 class="h4 text-success">Resultado: Macros en Gramos</h2>
+    <p><b>Carbohidratos:</b> <span class="fw-bold">{{ results.macros.carbohidratos_g }}</span> g</p>
+    <p><b>Proteínas:</b> <span class="fw-bold">{{ results.macros.proteinas_g }}</span> g</p>
+    <p class="mb-0"><b>Grasas:</b> <span class="fw-bold">{{ results.macros.grasas_g }}</span> g</p>
+</div>
+{% endif %}
+
+
+</div>
+{% endblock %}

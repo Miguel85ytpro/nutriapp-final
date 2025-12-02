@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-success bg-gradient text-white d-flex flex-column min-vh-100">
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="fw-bold mb-4 text-center">Calculadoras</h1>
+
+<div class="list-group">
+<a href="{{ url_for('imc') }}" class="list-group-item list-group-item-action">Calculadora IMC</a>
+<a href="{{ url_for('tmb') }}" class="list-group-item list-group-item-action">Tasa Metabólica Basal (TMB)</a>
+<a href="{{ url_for('gct') }}" class="list-group-item list-group-item-action">Gasto Calórico Total (GCT)</a>
+<a href="{{ url_for('peso_ideal') }}" class="list-group-item list-group-item-action">Calculadora de Peso Ideal</a>
+<a href="{{ url_for('macros') }}" class="list-group-item list-group-item-action">Calculadora de Macros</a>  
+</div>
+{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
